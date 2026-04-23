@@ -1,0 +1,1015 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #050505;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- 3D Starry Background --- */
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at bottom, #0a1f3a 0%, #000 100%);
+}
+
+/* Generating Many Stars */
+/* --- Realistic Starry Background --- */
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh; /* স্ক্রলিং এর জন্য ডাবল হাইট */
+  z-index: -1;
+  background: radial-gradient(circle at bottom, #0a1f3a 0%, #000 100%);
+  overflow: hidden;
+}
+
+/* ৩টি ভিন্ন লেয়ারের তারা তৈরি করা হচ্ছে */
+#stars,
+#stars2,
+#stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+
+/* লেয়ার ১: ছোট এবং অনেক তারা (Tiny Stars) */
+#stars {
+  width: 1px;
+  height: 1px;
+  /* এখানে ৩টি কমা দিয়ে আরও অনেক বক্স শ্যাডো যোগ করা যায় */
+  box-shadow:
+    145px 324px #fff,
+    1200px 450px #fff,
+    890px 10px #fff,
+    1500px 600px #fff,
+    300px 900px #fff,
+    700px 150px #fff,
+    1100px 800px #fff,
+    200px 1200px #fff,
+    1400px 300px #fff,
+    500px 500px #fff,
+    1800px 1000px #fff,
+    10px 1500px #fff,
+    1600px 100px #fff,
+    400px 1800px #fff,
+    900px 1400px #fff,
+    250px 30px #fff;
+  animation: animStar 100s linear infinite;
+  box-shadow:
+    200px 300px #fff,
+    400px 100px #fff,
+    600px 800px #fff,
+    800px 200px #fff,
+    1000px 900px #fff,
+    1200px 400px #fff,
+    1400px 700px #fff,
+    1600px 100px #fff,
+    100px 1200px #fff,
+    300px 1500px #fff,
+    500px 1700px #fff,
+    700px 1100px #fff,
+    900px 1900px #fff,
+    1100px 1300px #fff,
+    1300px 1600px #fff,
+    1500px 1800px #fff,
+    /* আপনি চাইলে এভাবে আরও লাইন কপি করে বাড়াতে পারেন */ 1700px 1400px #fff,
+    1900px 1200px #fff,
+    50px 100px #fff,
+    150px 500px #fff;
+}
+
+/* লেয়ার ২: মাঝারি তারা (Medium Stars) */
+#stars2 {
+  width: 2px;
+  height: 2px;
+  box-shadow:
+    100px 500px #fff,
+    300px 200px #fff,
+    600px 900px #fff,
+    900px 100px #fff,
+    1200px 800px #fff,
+    1500px 300px #fff,
+    1800px 700px #fff,
+    400px 1400px #fff;
+  animation: animStar 150s linear infinite;
+  opacity: 0.6;
+}
+
+/* লেয়ার ৩: উজ্জ্বল বড় তারা (Bright/Big Stars) */
+#stars3 {
+  width: 3px;
+  height: 3px;
+  box-shadow:
+    200px 800px #fff,
+    500px 100px #fff,
+    1100px 400px #fff,
+    1700px 900px #fff,
+    800px 1500px #fff,
+    1400px 1200px #fff,
+    1500px 2100px #fff;
+
+  animation: animStar 200s linear infinite;
+  opacity: 0.4;
+}
+
+/* তারাগুলোর ঝিকিমিকি ইফেক্ট (Twinkle Effect) */
+#stars,
+#stars2,
+#stars3 {
+  border-radius: 50%;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    /* স্ক্রিনের হাইট অনুযায়ী এটাকে মডিফাই করা যায় */
+    transform: translateY(-2000px);
+  }
+}
+
+/* --- Header --- */
+header {
+  /* width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px); */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%; /* পার্সেন্টেজ ব্যবহার করা হয়েছে যাতে বড়-ছোট সব স্ক্রিনে গ্যাপ ঠিক থাকে */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85); /* ব্লার ইফেক্ট আরও ক্লিয়ার করা হয়েছে */
+  backdrop-filter: blur(10px);
+}
+/* --- Hamburger Icon Style --- */
+.menu-toggle {
+  display: none; /* ডেক্সটপে লুকানো থাকবে */
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+/* --- Mobile Responsive (max-width: 768px) --- */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 30px;
+  }
+
+  .menu-toggle {
+    display: flex; /* মোবাইলে দেখাবে */
+  }
+
+  header nav ul {
+    position: absolute;
+    top: 100%; /* হেডারের ঠিক নিচে */
+    right: -100%; /* শুরুতে স্ক্রিনের বাইরে থাকবে */
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    transition: 0.5s ease-in-out;
+  }
+
+  /* যখন 'active' ক্লাস অ্যাড হবে তখন মেনু সামনে আসবে */
+  header nav ul.active {
+    right: 0;
+  }
+
+  header nav ul li {
+    margin: 20px 0;
+  }
+
+  header nav ul li a {
+    font-size: 20px;
+  }
+
+  /* ক্লিক করলে আইকন X হয়ে যাবে */
+  .menu-toggle.is-active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.is-active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+header nav ul li {
+  margin: 5px 15px;
+}
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+header nav ul li a.active,
+header nav ul li a:hover {
+  color: #03a9f4;
+}
+/* --- Hero Section --- */
+.hero {
+  /* min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  flex-wrap: wrap; */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* সেন্টারে রাখার জন্য */
+  padding: 80px 5% 40px; /* টপ প্যাডিং বাড়ানো হয়েছে যাতে হেডার লেখা ঢেকে না দেয় */
+  gap: 120px;
+}
+.left-col,
+.right-col {
+  flex: 1;
+  min-width: 350px;
+  margin-bottom: 30px;
+}
+
+/* --- 3D Orbit & Logos --- */
+.container {
+  /* position: relative;
+  width: 450px;
+  height: 450px;
+  margin: auto;
+  perspective: 1500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateX(70deg) rotateY(-10deg);
+  transform-style: preserve-3d; */
+  position: relative;
+  width: 100%; /* ফিক্সড ৪৫০px এর বদলে ১০০% করা হয়েছে */
+  max-width: 450px; /* সর্বোচ্চ ৪৫০px হবে */
+  aspect-ratio: 1 / 1; /* বর্গাকার রাখার জন্য */
+  margin: auto;
+  perspective: 1500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateX(60deg) rotateY(-5deg); /* এঙ্গেল কিছুটা কমানো হয়েছে যাতে লোগোগুলো বোঝা যায় */
+  transform-style: preserve-3d;
+}
+/* --- Media Queries (Mobile & Tablet) --- */
+
+.man {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  transform: rotateY(10deg) rotateX(-70deg);
+  z-index: 10;
+  box-shadow: 0 0 50px rgba(3, 169, 244, 0.6);
+  object-fit: cover;
+  border: 3px solid #03a9f4;
+}
+.logo-item {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  animation: orbit3D 15s linear infinite;
+}
+.logo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0 0 15px #03a9f4;
+}
+
+@keyframes orbit3D {
+  0% {
+    transform: rotateZ(0deg) translateX(220px) rotateZ(0deg) rotateX(-70deg)
+      scale(0.9);
+  }
+  100% {
+    transform: rotateZ(360deg) translateX(220px) rotateZ(-360deg)
+      rotateX(-70deg) scale(0.9);
+  }
+}
+
+/* Individual Logo Delays (15s / 15 = 1s) */
+.html {
+  animation-delay: 0s;
+}
+.css {
+  animation-delay: -1s;
+}
+.js {
+  animation-delay: -2s;
+}
+.sql {
+  animation-delay: -3s;
+}
+.python {
+  animation-delay: -4s;
+}
+.angular {
+  animation-delay: -5s;
+}
+.react {
+  animation-delay: -6s;
+}
+.net {
+  animation-delay: -7s;
+}
+.Git {
+  animation-delay: -8s;
+}
+.Github {
+  animation-delay: -9s;
+}
+.C {
+  animation-delay: -10s;
+}
+.Xml {
+  animation-delay: -11s;
+}
+.jquery {
+  animation-delay: -12s;
+}
+.Maui {
+  animation-delay: -13s;
+}
+.postman {
+  animation-delay: -14s;
+}
+/* --- Contact Section (3D Glassmorphism) --- */
+.contact-section {
+  padding: 100px 80px;
+  text-align: center;
+}
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: perspective(1000px) rotateX(5deg);
+  transition: 0.5s;
+}
+.contact-container:hover {
+  transform: perspective(1000px) rotateX(0deg);
+  box-shadow: 0 10px 40px rgba(3, 169, 244, 0.4);
+}
+
+.contact-container input,
+.contact-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  outline: none;
+}
+
+/* Typing & Buttons */
+.btn {
+  padding: 12px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btn-hire {
+  background: #03a9f4;
+  color: #fff;
+  border: none;
+}
+.btn-cv {
+  background: #e91e63;
+  color: #fff;
+}
+
+.socials i {
+  margin: 10px;
+  padding: 12px;
+  border: 1px solid #03a9f4;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.socials i:hover {
+  background: #03a9f4;
+  color: #000;
+  transform: translateY(-5px);
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.3s;
+}
+.btn-hire {
+  background: #03a9f4;
+  color: #fff;
+  margin-right: 15px;
+}
+.btn-hire:hover {
+  background: #0288d1;
+  transform: scale(1.05);
+}
+.cta-buttons {
+  margin-top: 20px;
+}
+
+.btn-contact {
+  background: transparent;
+  border: 2px solid #03a9f4;
+  color: #fff;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+  }
+  header nav ul {
+    margin: 15px 0;
+  }
+  .hero {
+    flex-direction: column-reverse;
+    padding-top: 150px;
+    text-align: center;
+  }
+  .container {
+    width: 300px;
+    height: 300px;
+  }
+  @keyframes orbit3D {
+    0% {
+      transform: rotateZ(0deg) translateX(140px) rotateZ(0deg) rotateX(-70deg)
+        scale(0.8);
+    }
+    100% {
+      transform: rotateZ(360deg) translateX(140px) rotateZ(-360deg)
+        rotateX(-70deg) scale(0.8);
+    }
+  }
+}
+/*socials*/
+.socials {
+  margin-top: 30px;
+}
+.social a {
+  color: #fff;
+  font-size: 24px;
+  margin-right: 15px;
+}
+/* Social Icons */
+.socials i {
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #00eaff;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #00eaff;
+}
+
+.socials i:hover {
+  background: #00eaff;
+  color: #000;
+}
+/*design page system*/
+:root {
+  --bg-color: #081629;
+  --main-color: #00abf0;
+  --text-color: #333;
+  --second-text-color: #555;
+  --white-color: #fff;
+  --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
+  --pages-color: linear-gradient(90deg, #fff, #ddd);
+  --border: 125rem solid #00abf0;
+  --box-shadow: 00.6rem rgba(0, 0, 0, 2);
+}
+/*=========================index==============*/
+.index {
+  text-align: center;
+  margin-bottom: 5px;
+}
+.index-item {
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* index-btn এর মডার্ন ডিজাইন */
+.index-btn {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.2rem; /* ডান পাশের কোণায় */
+  background: #00abf0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 171, 240, 0.3);
+  text-transform: uppercase;
+  z-index: 20; /* যাতে অন্য এলিমেন্টের উপরে থাকে */
+}
+
+/* হোভার ইফেক্ট */
+.index-btn:hover {
+  background: #0077aa;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 171, 240, 0.5);
+}
+
+/* মোবাইল রেসপন্সিভনেস এর জন্য অল্প মার্জিন */
+@media (max-width: 480px) {
+  .index-btn {
+    padding: 8px 12px;
+    font-size: 11px;
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+/*--------------------------*/
+.index-item:hover {
+  background-color: #f0f0f0;
+  transform: translateX(5px);
+}
+
+.index-item h5 {
+  pointer-events: none;
+}
+.workeduc-content {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.workeduc-content:hover {
+  background: #00abf0;
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/*=========================index==============*/
+
+.pagesys {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  position: relative;
+  width: 66rem;
+  height: 45rem;
+  padding: 2rem;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--cover-color);
+  box-shadow: var(--box-shadow);
+  border-top-left-radius: 0.6rem;
+  border-bottom-left-radius: 0.6rem;
+  transform-origin: right;
+}
+.cover.cover-left {
+  z-index: -1;
+}
+.cover.cover-right.turn {
+  transform: rotateY(180deg);
+}
+
+/* BOOK */
+.book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 250rem;
+}
+
+.book-page {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  background: var(--pages-color);
+  box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.1);
+}
+.book-page.turn {
+  transform: rotateY(-180deg);
+  z-index: 10 !important; /* উল্টানোর সময় উপরে থাকবে */
+}
+/* LEFT PAGE */
+.page-left {
+  left: 0;
+  /* z-index: 1; */
+}
+
+/* RIGHT PAGE */
+.page-right {
+  position: absolute;
+  right: 0;
+  left: 50%;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* TURN EFFECT */
+.page-right.turn {
+  transform: rotateY(-180deg);
+}
+
+/* FRONT SIDE */
+.page-front,
+.page-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 1rem 1rem;
+  -webkit-backface-visibility: hidden; /* Safari support */
+}
+
+/* BACK SIDE */
+.page-back {
+  transform: rotateY(180deg) translateZ(1px);
+}
+
+/* PROFILE */
+.page-front .page-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.page-back .title {
+  text-align: center;
+  margin-bottom: 5px;
+}
+.page-front .title {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.number-page {
+  position: absolute;
+  bottom: 1rem;
+  left: 45%;
+  transform: translateX(-50%);
+}
+/* next-previous btn */
+.nextprev-btn {
+  right: 1rem;
+  position: absolute;
+  bottom: 0.5rem;
+  cursor: pointer;
+}
+.back {
+  left: 1rem;
+  bottom: 0.5rem;
+  cursor: pointer;
+  /* margin-right: 300px; */
+  position: absolute;
+}
+/*=================================*/
+/*==============Skil==========*/
+.skills-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 8px;
+}
+
+/* section title */
+.skills-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+/* 🔥 GRID layout (important) */
+.tools {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* প্রতি লাইনে ৪টি */
+  gap: 10px;
+
+  /* ২ সারির জন্য হাইট ফিক্স করা */
+  /* প্রতিটি কার্ডের উচ্চতা (৬০px) + গ্যাপ (১০px) = ২ সারির জন্য মোট ১৩০px-১৪০px */
+  max-height: 140px;
+
+  overflow-y: auto; /* ২ সারির বেশি হলে স্ক্রলবার আসবে */
+  overflow-x: auto;
+  padding-right: 5px; /* স্ক্রলবার যাতে কার্ডের গায়ে না লেগে থাকে */
+}
+
+/* স্ক্রলবারটিকে সুন্দর করার জন্য (Optional) */
+.tools::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.tools::-webkit-scrollbar-thumb {
+  background: #00abf0;
+  border-radius: 10px;
+}
+
+.tools::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+/* ৪. হোভার করলে রঙ গাঢ় হবে (সুন্দর দেখানোর জন্য) */
+.tools::-webkit-scrollbar-thumb:hover {
+  background: #0081b8;
+}
+/* tablet */
+@media (max-width: 768px) {
+  .tools {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* মোবাইল রেসপনসিভনেস ঠিক রাখা */
+@media (max-width: 480px) {
+  .tools {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* মোবাইলে ২ কলাম করলে ২ সারিতে ৪টি দেখাবে */
+    max-height: 140px;
+  }
+}
+
+/* 🔥 card design */
+.tools span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 90px;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid #00abf0;
+  transition: 0.3s ease;
+}
+/* --- Skills Grid Fix --- */
+/* icon */
+.tools i {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+/* hover effect */
+.tools span:hover {
+  background: #00abf0;
+  color: #fff;
+  transform: translateY(-5px);
+}
+/* main card */
+.project5 {
+  background: #d7e8e0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* hover lift */
+.project5:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* image box */
+.img-box {
+  position: relative;
+  width: 100%;
+  height: 14.5rem;
+  overflow: hidden;
+}
+
+/* image smooth zoom */
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+/* hover effect */
+.project5:hover .img-box img {
+  transform: scale(1.1);
+  filter: brightness(0.8);
+}
+
+/* overlay effect */
+.img-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.project5:hover .img-box::after {
+  opacity: 1;
+}
+
+/* info box */
+.info-box {
+  padding: 15px;
+}
+.info-box p {
+  font-size: 1rem;
+  color: #181717;
+  line-height: 1.5;
+  max-height: 7rem;
+
+  overflow-y: auto;
+  padding-right: 5px;
+  word-wrap: break-word;
+}
+.info-box p::-webkit-scrollbar {
+  width: 10px;
+}
+
+.info-box p::-webkit-scrollbar-thumb {
+  background: #0028f0;
+  border-radius: 10px;
+}
+
+.info-box p::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* title + link */
+.info-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-title h3 {
+  font-size: 18px;
+}
+
+/* live preview link */
+.info-title a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #007bff;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.info-title a:hover {
+  color: #ff0055;
+  transform: translateX(5px);
+}
+
+/* buttons */
+.btn-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 1px 5px 1px;
+}
+
+/* buttons style */
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #00abf0;
+  color: #fff;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+/* hover */
+.btn:hover {
+  background: #0077aa;
+  transform: scale(1.05);
+}
+/*Use-Tools*/
+.use-tools {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 👉 প্রতি লাইনে 4টা */
+  gap: 5px;
+}
+/* tablet */
+@media (max-width: 768px) {
+  .tools {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* mobile */
+@media (max-width: 480px) {
+  .tools {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.use-tools span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 65px;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid #00abf0;
+  transition: 0.3s ease;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.use-tools span:hover {
+  background: #00e4f0;
+  color: #fff;
+  transform: translateY(-5px);
+}
+/* পেজগুলোর ডিফল্ট স্ট্যাক অর্ডার */
+#turn-1 {
+  z-index: 3;
+}
+#turn-2 {
+  z-index: 2;
+}
+#turn-3 {
+  z-index: 1;
+}
