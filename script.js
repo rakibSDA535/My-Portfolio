@@ -130,7 +130,7 @@ nextPrevBtns.forEach((btn) => {
   });
 });
 
-/*===================index*/
+/*===================index===============*/
 document.querySelectorAll(".index-item").forEach((item) => {
   item.addEventListener("click", () => {
     const targetPageNum = item.getAttribute("data-target");
@@ -146,30 +146,37 @@ document.querySelectorAll(".index-item").forEach((item) => {
     }
   });
 });
+
 /*========================*/
 /* Index বাটনে ক্লিক করলে প্রথম পাতায় (Index Page) ফিরে যাওয়ার লজিক */
 document.querySelectorAll(".index-btn").forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    e.stopPropagation(); // ক্লিক যেন ব্যাক বাটনে ট্রিগার না হয়
+    e.stopPropagation();
+    const turnedPages = document.querySelectorAll(".book-page.turn");
+    const allPages = Array.from(turnedPages).reverse();
 
-    // সব উল্টানো পাতাকে আগের অবস্থায় ফিরিয়ে আনা
-    const allPages = document.querySelectorAll(".book-page.page-right");
-    allPages.forEach((page) => {
-      page.classList.remove("turn");
-      page.style.zIndex = "";
+    allPages.forEach((page, index) => {
+      setTimeout(() => {
+        page.classList.remove("turn");
+        setTimeout(() => {
+          const totalPages = document.querySelectorAll(".book-page").length;
+          page.style.zIndex =
+            totalPages -
+            Array.from(document.querySelectorAll(".book-page")).indexOf(page);
+        }, 500);
+      }, index * 200);
     });
   });
 });
-/*mobile nav*/
+/*================mobile nav===============*/
 const menu = document.querySelector("#mobile-menu");
 const menuLinks = document.querySelector("#nav-menu");
 
 menu.addEventListener("click", function () {
-  menu.classList.toggle("is-active"); // আইকন পরিবর্তনের জন্য
-  menuLinks.classList.toggle("active"); // মেনু দেখানোর জন্য
+  menu.classList.toggle("is-active");
+  menuLinks.classList.toggle("active");
 });
 
-// মেনুর কোনো লিংকে ক্লিক করলে মেনু নিজে থেকেই বন্ধ হয়ে যাবে
 document.querySelectorAll("header nav ul li a").forEach((n) =>
   n.addEventListener("click", () => {
     menu.classList.remove("is-active");

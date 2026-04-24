@@ -151,31 +151,21 @@ body {
 
 /* --- Header --- */
 header {
-  /* width: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 80px;
   position: fixed;
   top: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px); */
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%; /* পার্সেন্টেজ ব্যবহার করা হয়েছে যাতে বড়-ছোট সব স্ক্রিনে গ্যাপ ঠিক থাকে */
-  position: fixed;
-  top: 0;
   left: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.85); /* ব্লার ইফেক্ট আরও ক্লিয়ার করা হয়েছে */
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
 }
 /* --- Hamburger Icon Style --- */
 .menu-toggle {
-  display: none; /* ডেক্সটপে লুকানো থাকবে */
+  display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
@@ -235,6 +225,7 @@ header {
     transform: translateY(-8px) rotate(-45deg);
   }
 }
+/* --- Hamburger Icon Style --- */
 header nav ul {
   display: flex;
   list-style: none;
@@ -258,14 +249,14 @@ header nav ul li a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 80px;
-  flex-wrap: wrap; */
+  padding: 0 80px; 
+  flex-wrap: wrap;*/
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center; /* সেন্টারে রাখার জন্য */
-  padding: 80px 5% 40px; /* টপ প্যাডিং বাড়ানো হয়েছে যাতে হেডার লেখা ঢেকে না দেয় */
-  gap: 120px;
+  justify-content: center;
+  padding: 80px 5% 40px;
+  gap: 115px;
 }
 .left-col,
 .right-col {
@@ -287,15 +278,15 @@ header nav ul li a:hover {
   transform: rotateX(70deg) rotateY(-10deg);
   transform-style: preserve-3d; */
   position: relative;
-  width: 100%; /* ফিক্সড ৪৫০px এর বদলে ১০০% করা হয়েছে */
-  max-width: 450px; /* সর্বোচ্চ ৪৫০px হবে */
-  aspect-ratio: 1 / 1; /* বর্গাকার রাখার জন্য */
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
   margin: auto;
   perspective: 1500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: rotateX(60deg) rotateY(-5deg); /* এঙ্গেল কিছুটা কমানো হয়েছে যাতে লোগোগুলো বোঝা যায় */
+  transform: rotateX(70deg) rotateY(-10deg);
   transform-style: preserve-3d;
 }
 /* --- Media Queries (Mobile & Tablet) --- */
@@ -840,6 +831,7 @@ header nav ul li a:hover {
   transition: 0.4s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  max-height: 595px;
 }
 
 /* hover lift */
@@ -1003,6 +995,7 @@ header nav ul li a:hover {
   color: #fff;
   transform: translateY(-5px);
 }
+
 /* পেজগুলোর ডিফল্ট স্ট্যাক অর্ডার */
 #turn-1 {
   z-index: 3;
@@ -1012,4 +1005,209 @@ header nav ul li a:hover {
 }
 #turn-3 {
   z-index: 1;
+}
+/* প্রজেক্টের পাতাগুলো সিরিয়াল অনুযায়ী সাজানো */
+.book-page:nth-child(1) {
+  z-index: 5;
+}
+.book-page:nth-child(2) {
+  z-index: 4;
+}
+.book-page:nth-child(3) {
+  z-index: 3;
+}
+.book-page:nth-child(4) {
+  z-index: 2;
+}
+.book-page:nth-child(5) {
+  z-index: 1;
+}
+.project {
+  text-align: center;
+}
+/* Container Settings */
+.about-section {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.about-page {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Left Side: Personal Info */
+.profile-icon {
+  width: 60px;
+  height: 60px;
+  background: #00abf0;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.detail-item i {
+  color: #00abf0;
+  font-size: 18px;
+  width: 25px;
+}
+
+.detail-item span {
+  font-size: 12px;
+  color: #777;
+  display: block;
+}
+
+.detail-item p {
+  font-weight: 600;
+  margin: 0;
+  font-size: 14px;
+}
+
+.training-badge {
+  margin-top: 30px;
+  background: #e3f6ff;
+  padding: 15px;
+  border-left: 4px solid #00abf0;
+  border-radius: 5px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Right Side: Skill Cards (Based on Screenshot_20) */
+.modern-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.skill-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  transition: 0.4s;
+  text-align: center;
+}
+
+.skill-box:hover {
+  transform: translateY(-5px);
+  border-color: #00abf0;
+  box-shadow: 0 10px 20px rgba(0, 171, 240, 0.1);
+}
+
+.icon-wrap {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 12px;
+  font-size: 20px;
+}
+
+.color-1 {
+  background: #ffebee;
+  color: #f44336;
+}
+.color-2 {
+  background: #e3f2fd;
+  color: #2196f3;
+}
+.color-3 {
+  background: #f3e5f5;
+  color: #9c27b0;
+}
+.color-4 {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.skill-box h4 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.skill-box p {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+}
+
+/* Tools Tags */
+.tools-footer {
+  margin-top: 25px;
+}
+.tools-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.tools-tags span {
+  background: #f0f0f0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+/* Skills Grid Style (Like Screenshot_20) */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.5); /* হালকা স্বচ্ছ */
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  background: #00abf0;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 171, 240, 0.2);
+}
+
+.skill-card i {
+  font-size: 1.5rem;
+  color: #00abf0;
+  margin-bottom: 8px;
+}
+
+.skill-card:hover i {
+  color: white;
+}
+
+.skill-card h4 {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.skill-card p {
+  font-size: 11px;
+  opacity: 0.8;
 }
