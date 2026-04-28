@@ -10,6 +10,156 @@
   outline: none;
   font-family: "Poppins", sans-serif;
 }
+/*===================================================================================================new*/
+/* --- Global Glassmorphism Style (সবার জন্য কমন) --- */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  transition: 0.5s ease;
+  transform: perspective(1000px) rotateX(2deg);
+}
+
+.glass-effect:hover {
+  transform: perspective(1000px) rotateX(0deg);
+  box-shadow: 0 15px 40px rgba(3, 169, 244, 0.3);
+  border: 1px solid rgba(3, 169, 244, 0.5);
+}
+
+/* --- About & Skill Section Redesign --- */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.about-page,
+.skill-card {
+  background: rgba(255, 255, 255, 0.03) !important; /* গ্লাস লুক */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Skill Cards Layout */
+.modern-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.skill-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+.skill-box:hover {
+  background: rgba(3, 169, 244, 0.2);
+  border-color: #03a9f4;
+  transform: translateY(-5px);
+}
+
+/* --- Responsive Layout (সব ডিভাইসের জন্য) --- */
+
+/* বড় স্ক্রিনে বুক-সিস্টেম ঠিক রাখা */
+@media (max-width: 1200px) {
+  .wrapper {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+}
+
+/* মোবাইল ও ট্যাবলেটের জন্য হিরো সেকশন ও অরবিট ফিক্স */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px;
+    gap: 50px;
+  }
+
+  .container {
+    width: 250px;
+    height: 250px;
+  }
+
+  /* ৩ডি অরবিট ছোট করা যাতে মোবাইলে স্ক্রিনের বাইরে না যায় */
+  @keyframes orbit3D {
+    0% {
+      transform: rotateZ(0deg) translateX(120px) rotateZ(0deg) rotateX(-70deg)
+        scale(0.7);
+    }
+    100% {
+      transform: rotateZ(360deg) translateX(120px) rotateZ(-360deg)
+        rotateX(-70deg) scale(0.7);
+    }
+  }
+
+  .man {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* বইয়ের পাতা মোবাইলে সিঙ্গেল কলামে আনা */
+  .wrapper {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .book {
+    perspective: none;
+  }
+
+  .book-page {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+    height: auto !important;
+    min-height: 400px;
+  }
+
+  .page-right {
+    left: 0;
+    transform: none !important;
+  }
+
+  .page-front,
+  .page-back {
+    position: relative;
+    backface-visibility: visible;
+  }
+}
+
+/* ছোট মোবাইলের জন্য (iPhone SE, etc.) */
+@media (max-width: 480px) {
+  .logo-item {
+    width: 35px;
+    height: 35px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .modern-skills-grid {
+    grid-template-columns: 1fr 1fr; /* ২ কলামে স্কিল */
+  }
+}
+/*===================================================================================================new*/
 
 body {
   background: #050505;
@@ -245,12 +395,6 @@ header nav ul li a:hover {
 }
 /* --- Hero Section --- */
 .hero {
-  /* min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 80px; 
-  flex-wrap: wrap;*/
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -267,16 +411,6 @@ header nav ul li a:hover {
 
 /* --- 3D Orbit & Logos --- */
 .container {
-  /* position: relative;
-  width: 450px;
-  height: 450px;
-  margin: auto;
-  perspective: 1500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: rotateX(70deg) rotateY(-10deg);
-  transform-style: preserve-3d; */
   position: relative;
   width: 100%;
   max-width: 450px;
